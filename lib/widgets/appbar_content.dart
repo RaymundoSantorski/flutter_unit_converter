@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AppbarContent extends StatefulWidget {
-  const AppbarContent({super.key, required this.title});
+class AppbarContent extends StatelessWidget {
+  const AppbarContent({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.setValue,
+  });
   final String title;
+  final int value;
+  final void Function(int?) setValue;
 
-  @override
-  State<AppbarContent> createState() => _AppbarContentState();
-}
-
-class _AppbarContentState extends State<AppbarContent> {
-  int value = 0;
-
-  void setValue(int? val) {
-    setState(() {
-      value = val ?? 0;
-    });
-  }
-
-  TextStyle textStyle = TextStyle(
+  final TextStyle textStyle = const TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.bold,
   );
@@ -26,7 +20,7 @@ class _AppbarContentState extends State<AppbarContent> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(widget.title, style: textStyle),
+        Text(title, style: textStyle),
         DropdownButton(
           style: TextStyle(color: Colors.white),
           borderRadius: BorderRadius.all(Radius.circular(12)),
