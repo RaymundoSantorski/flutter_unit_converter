@@ -39,14 +39,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  TextStyle textStyle = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Column(
           children: [
-            Text(widget.title),
+            Text(widget.title, style: textStyle),
             DropdownButton(
+              style: TextStyle(color: Colors.white),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              dropdownColor: Color.fromRGBO(50, 50, 250, 0.9),
               value: value,
               items: [
                 DropdownMenuItem(value: 0, child: Text('Longitud')),
