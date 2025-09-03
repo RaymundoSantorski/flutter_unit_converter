@@ -31,8 +31,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int value = 0;
+
+  void setValue(int? val) {
+    setState(() {
+      value = val ?? 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text(widget.title)));
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          children: [
+            Text(widget.title),
+            DropdownButton(
+              value: value,
+              items: [
+                DropdownMenuItem(value: 0, child: Text('Longitud')),
+                DropdownMenuItem(value: 1, child: Text('Peso')),
+                DropdownMenuItem(value: 2, child: Text('Temperatura')),
+              ],
+              onChanged: setValue,
+            ),
+          ],
+        ),
+        toolbarHeight: 100,
+      ),
+    );
   }
 }
