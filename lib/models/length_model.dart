@@ -39,3 +39,5 @@ class Meter {
   /// returns a Meter from a Centimeter object
   factory Meter.fromCentimeter(Centimeter m) => Meter(m.value / 100);
 }
+
+enum LengthModels { mm, cm, m }
