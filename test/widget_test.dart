@@ -34,8 +34,8 @@ void main() {
     expect(find.text('Temperatura'), findsOne);
 
     // tap an option and trigger a frame
-    await tester.tap(find.byKey(Key('ddi_1')));
-    await tester.pump();
+    await tester.tap(find.byKey(Key('ddi_1')), warnIfMissed: false);
+    await tester.pumpAndSettle();
 
     // verify that dropdown button have selected the correct option
     expect(find.text('Peso'), findsOne);
