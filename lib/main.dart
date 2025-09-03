@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Unit converter'),
+      home: const MyHomePage(title: 'Unit Converter'),
     );
   }
 }
@@ -60,16 +60,19 @@ class _MyHomePageState extends State<MyHomePage> {
               iconDisabledColor: Colors.grey,
               items: [
                 DropdownMenuItem(
+                  key: Key('ddi_0'),
                   value: 0,
                   enabled: value != 0,
                   child: Text('Longitud'),
                 ),
                 DropdownMenuItem(
+                  key: Key('ddi_1'),
                   value: 1,
                   enabled: value != 1,
                   child: Text('Peso'),
                 ),
                 DropdownMenuItem(
+                  key: Key('ddi_2'),
                   value: 2,
                   enabled: value != 2,
                   child: Text('Temperatura'),
