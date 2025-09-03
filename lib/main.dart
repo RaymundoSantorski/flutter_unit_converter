@@ -57,10 +57,23 @@ class _MyHomePageState extends State<MyHomePage> {
               borderRadius: BorderRadius.all(Radius.circular(12)),
               dropdownColor: Color.fromRGBO(50, 50, 250, 0.9),
               value: value,
+              iconDisabledColor: Colors.grey,
               items: [
-                DropdownMenuItem(value: 0, child: Text('Longitud')),
-                DropdownMenuItem(value: 1, child: Text('Peso')),
-                DropdownMenuItem(value: 2, child: Text('Temperatura')),
+                DropdownMenuItem(
+                  value: 0,
+                  enabled: value != 0,
+                  child: Text('Longitud'),
+                ),
+                DropdownMenuItem(
+                  value: 1,
+                  enabled: value != 1,
+                  child: Text('Peso'),
+                ),
+                DropdownMenuItem(
+                  value: 2,
+                  enabled: value != 2,
+                  child: Text('Temperatura'),
+                ),
               ],
               onChanged: setValue,
             ),
