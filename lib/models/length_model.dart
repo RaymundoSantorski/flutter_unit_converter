@@ -1,14 +1,24 @@
+import 'dart:developer';
+
 abstract class Length {
   double value;
   Length(this.value);
 
   factory Length.from(Type type, double value) {
-    if (type is Centimeter) {
+    if (type == Centimeter) {
       return Centimeter(value);
-    } else if (type is Meter) {
+    } else if (type == Meter) {
       return Meter(value);
     }
     return Millimeter(value);
+  }
+
+  get type {
+    return Length;
+  }
+
+  Length to(Type type) {
+    return this;
   }
 }
 
@@ -27,6 +37,23 @@ class Millimeter extends Length {
     }
     return Millimeter(len.value);
   }
+
+  @override
+  get type {
+    return Millimeter;
+  }
+
+  @override
+  Length to(Type type) {
+    switch (type) {
+      case Centimeter:
+        return Centimeter.from(this);
+      case Meter:
+        return Meter.from(this);
+      default:
+        return this;
+    }
+  }
 }
 
 /// class Centimeter with methods to convert from other length classes
@@ -44,6 +71,23 @@ class Centimeter extends Length {
     }
     return Centimeter(len.value);
   }
+
+  @override
+  get type {
+    return Centimeter;
+  }
+
+  @override
+  Length to(Type type) {
+    switch (type) {
+      case Millimeter:
+        return Millimeter.from(this);
+      case Meter:
+        return Meter.from(this);
+      default:
+        return this;
+    }
+  }
 }
 
 /// class Meter with methods to convert from other length classes
@@ -60,5 +104,22 @@ class Meter extends Length {
       return Meter(len.value / 100);
     }
     return Meter(len.value);
+  }
+
+  @override
+  get type {
+    return Meter;
+  }
+
+  @override
+  Length to(Type type) {
+    switch (type) {
+      case Centimeter:
+        return Centimeter.from(this);
+      case Millimeter:
+        return Millimeter.from(this);
+      default:
+        return this;
+    }
   }
 }
