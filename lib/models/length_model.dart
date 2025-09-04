@@ -1,43 +1,64 @@
+abstract class Length {
+  double value;
+  Length(this.value);
+
+  factory Length.from(Type type, double value) {
+    if (type is Centimeter) {
+      return Centimeter(value);
+    } else if (type is Meter) {
+      return Meter(value);
+    }
+    return Millimeter(value);
+  }
+}
+
 /// class Millimeter with methods to convert from other length classes
-class Millimeter {
-  late double value;
-
+class Millimeter extends Length {
   /// Constructor of the class, asigns the value
-  Millimeter(this.value);
+  Millimeter(super.value);
 
-  /// returns a Millimeter from a Centimeter object
-  factory Millimeter.fromCentimeter(Centimeter c) => Millimeter(c.value * 10);
-
-  /// returns a Millimeter from a Meter object
-  factory Millimeter.fromMeter(Meter m) => Millimeter(m.value * 1000);
+  /// returns a Millimeter from a Length object
+  @override
+  factory Millimeter.from(Length len) {
+    if (len is Centimeter) {
+      return Millimeter(len.value * 10);
+    } else if (len is Meter) {
+      return Millimeter(len.value * 1000);
+    }
+    return Millimeter(len.value);
+  }
 }
 
 /// class Centimeter with methods to convert from other length classes
-class Centimeter {
-  late double value;
-
+class Centimeter extends Length {
   /// Constructor of the class, asigns the value
-  Centimeter(this.value);
+  Centimeter(super.value);
 
-  /// returns a Centimeter from a Millimeter object
-  factory Centimeter.fromMillimeter(Millimeter m) => Centimeter(m.value / 10);
-
-  /// returns a Centimeter from a Meter object
-  factory Centimeter.fromMeter(Meter m) => Centimeter(m.value * 100);
+  /// returns a Centimeter a Length object
+  @override
+  factory Centimeter.from(Length len) {
+    if (len is Millimeter) {
+      return Centimeter(len.value / 10);
+    } else if (len is Meter) {
+      return Centimeter(len.value * 100);
+    }
+    return Centimeter(len.value);
+  }
 }
 
 /// class Meter with methods to convert from other length classes
-class Meter {
-  late double value;
-
+class Meter extends Length {
   /// Constructor of the class, asigns the value
-  Meter(this.value);
+  Meter(super.value);
 
-  /// returns a Meter from a Millimeter object
-  factory Meter.fromMillimeter(Millimeter m) => Meter(m.value / 1000);
-
-  /// returns a Meter from a Centimeter object
-  factory Meter.fromCentimeter(Centimeter m) => Meter(m.value / 100);
+  /// returns a Meter from a Length object
+  @override
+  factory Meter.from(Length len) {
+    if (len is Millimeter) {
+      return Meter(len.value / 1000);
+    } else if (len is Centimeter) {
+      return Meter(len.value / 100);
+    }
+    return Meter(len.value);
+  }
 }
-
-enum LengthModels { mm, cm, m }

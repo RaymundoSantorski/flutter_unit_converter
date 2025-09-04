@@ -9,49 +9,59 @@ class LengthScreen extends StatefulWidget {
 }
 
 class _LengthScreenState extends State<LengthScreen> {
-  LengthModels fromUnit = LengthModels.mm;
-  LengthModels toUnit = LengthModels.mm;
-
-  void setFromUnit(LengthModels? value) {
-    setState(() {
-      fromUnit = value ?? LengthModels.mm;
-    });
-  }
-
-  void setToUnit(LengthModels? value) {
-    setState(() {
-      toUnit = value ?? LengthModels.mm;
-    });
-  }
+  Type fromType = Millimeter;
+  Type toType = Millimeter;
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController fromController = TextEditingController(text: '');
+    TextEditingController toController = TextEditingController(text: '');
+
+    void setFromType(Type? type) {
+      setState(() {
+        fromType = type ?? Millimeter;
+      });
+    }
+
+    void setToType(Type? type) {
+      setState(() {
+        toType = type ?? Millimeter;
+      });
+    }
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            DropdownButton(
-              value: fromUnit,
+            DropdownButton<Type>(
+              value: fromType,
               items: [
-                DropdownMenuItem(value: LengthModels.mm, child: Text('mm')),
-                DropdownMenuItem(value: LengthModels.cm, child: Text('cm')),
-                DropdownMenuItem(value: LengthModels.m, child: Text('m')),
+                DropdownMenuItem(value: Millimeter, child: Text('mm')),
+                DropdownMenuItem(value: Centimeter, child: Text('cm')),
+                DropdownMenuItem(value: Meter, child: Text('m')),
               ],
-              onChanged: setFromUnit,
+              onChanged: setFromType,
             ),
             Icon(Icons.arrow_forward),
-            DropdownButton(
-              value: toUnit,
+            DropdownButton<Type>(
+              value: toType,
               items: [
-                DropdownMenuItem(value: LengthModels.mm, child: Text('mm')),
-                DropdownMenuItem(value: LengthModels.cm, child: Text('cm')),
-                DropdownMenuItem(value: LengthModels.m, child: Text('m')),
+                DropdownMenuItem(value: Millimeter, child: Text('mm')),
+                DropdownMenuItem(value: Centimeter, child: Text('cm')),
+                DropdownMenuItem(value: Meter, child: Text('m')),
               ],
-              onChanged: setToUnit,
+              onChanged: setToType,
             ),
           ],
         ),
+        Card(
+          child: TextField(
+            keyboardType: TextInputType.number,
+            controller: fromController,
+          ),
+        ),
+        Card(child: TextField(controller: toController, enabled: false)),
       ],
     );
   }
