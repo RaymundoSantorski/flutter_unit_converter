@@ -2,241 +2,47 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_unit_converter/models/centimeter.dart';
 import 'package:flutter_unit_converter/models/inch.dart';
 import 'package:flutter_unit_converter/models/kilometer.dart';
+import 'package:flutter_unit_converter/models/length_model.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
 
+/// Test of the Lenth class
 void main() {
-  /// Test of the Nanometer class, tests convertions from other Length types to Nanometer type
-  group('Nanometer class', () {
-    test('The constructor asigns the correct value', () {
-      final nm = Nanometer(20.0);
-      expect(nm.value, 20.0);
-      expect(nm.type, Nanometer);
-    });
-
-    test('The factory constructor converts from Nanometer to Nanometer', () {
-      final nn = Nanometer(1.0); // 1 nm
-      final mm = Nanometer.from(nn); // Expects 1 nm
-
-      expect(mm.value, 1.0);
-      expect(mm.type, Nanometer);
-    });
-    test('The factory constructor converts from Micrometer to Nanometer', () {
-      final mm = Micrometer(1.0); // 1 Mm
-      final nm = Nanometer.from(mm); // Expects 1,000 nm
-
-      expect(nm.value, 1000.0);
-      expect(nm.type, Nanometer);
-    });
-    test('The factory constructor converts from Millimeter to Nanometer', () {
-      final mm = Millimeter(0.1); // 0.1 mm
-      final nm = Nanometer.from(mm); // Expects 100,000 nm
-
-      expect(nm.value, 100000.0);
-      expect(nm.type, Nanometer);
-    });
-    test('The factory constructor converts from Centimeter to Nanometer', () {
-      final mm = Centimeter(0.01); // 1 cm
-      final nm = Nanometer.from(mm); // Expects 100,000 nm
-
-      expect(nm.value, 100000.0);
-      expect(nm.type, Nanometer);
-    });
-    test('The factory constructor converts from Inch to Nanometer', () {
-      final mm = Inch(0.0001); // 1 in
-      final nm = Nanometer.from(mm); // Expects 2,540 nm
-
-      expect(nm.value, 2540.0);
-      expect(nm.type, Nanometer);
-    });
-    test('The factory constructor converts from Meter to Nanometer', () {
-      final m = Meter(0.0001); // 1 m
-      final nm = Nanometer.from(m); // Expects 100,000 nm
-
-      expect(nm.value, 100000.0);
-      expect(nm.type, Nanometer);
-    });
-    test('The factory constructor converts from Kilometer to Nanometer', () {
-      final km = Kilometer(0.0001); // 1 km
-      final nm = Nanometer.from(km); // Expects 100,000,000 nm
-
-      expect(nm.value, 100000000.0);
-      expect(nm.type, Nanometer);
-    });
-  }); // Nanometer class
-
-  /// Test of the Millimeter class, tests convertions from other Length types to Micrometer type
-  group('Micrometer class', () {
-    test('The constructor asigns the correct value', () {
-      final Mm = Micrometer(10.0);
-      expect(Mm.value, 10.0);
-      expect(Mm.type, Micrometer);
-    });
-
-    test('The factory constructor converts from Nanometer to Micrometer', () {
-      final nm = Nanometer(1000); // 1,000nm
-      final Mm = Micrometer.from(nm); // Expects 1Mm
-      expect(Mm.value, 1.0);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Micrometer to Micrometer', () {
-      final nm = Micrometer(1000); // 1,000nm
-      final Mm = Micrometer.from(nm); // Expects 1,000Mm
-      expect(Mm.value, 1000.0);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Millimeter to Micrometer', () {
-      final mm = Millimeter(0.001); // 0.001mm
-      final Mm = Micrometer.from(mm); // Expects 1Mm
-      expect(Mm.value, 1.0);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Centimeter to Micrometer', () {
-      final cm = Centimeter(0.001); // 0.001mm
-      final Mm = Micrometer.from(cm); // Expects 10Mm
-      expect(Mm.value, 10.0);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Inch to Micrometer', () {
-      final cm = Inch(1); // 1 in
-      final Mm = Micrometer.from(cm); // Expects 25400Mm
-      expect(Mm.value, 25400.0);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Meter to Micrometer', () {
-      final m = Meter(1); // 1m
-      final Mm = Micrometer.from(m); // Expects 1,000,000Mm
-      expect(Mm.value, 1000000);
-      expect(Mm.type, Micrometer);
-    });
-    test('The factory constructor converts from Kilometer to Micrometer', () {
-      final km = Kilometer(1); // 1m
-      final Mm = Micrometer.from(km); // Expects 1,000,000,000Mm
-      expect(Mm.value, 1000000000);
-      expect(Mm.type, Micrometer);
-    });
-  }); // Micrometer class
-
-  /// Test of the Millimeter class, tests convertions from other Length types to Millimeter type
-  group('Millimeter class', () {
-    test('The constructor asigns the correct value', () {
-      final mm = Millimeter(15.0);
-      expect(mm.value, 15.0);
-      expect(mm.type, Millimeter);
-    });
-
-    test('The factory constructor converts from Nanometer to Millimeter', () {
-      final nn = Nanometer(1000000.0); // 1,000,000 nn
-      final mm = Millimeter.from(nn); // Expects 1 mm
-
-      expect(mm.value, 1.0);
-      expect(mm.type, Millimeter);
-    });
-    test('The factory constructor converts from Micrometer to Millimeter', () {
-      final Mm = Micrometer(1000.0); // 1,000 Mm
-      final mm = Millimeter.from(Mm); // Expects 1 mm
-
-      expect(mm.value, 1.0);
-      expect(mm.type, Millimeter);
-    });
-    test('The factory constructor converts from Millimeter to Millimeter', () {
-      final mm1 = Millimeter(10.0); // 10 mm
-      final mm2 = Millimeter.from(mm1); // Expects 10 mm
-
-      expect(mm2.value, 10.0);
-      expect(mm2.type, Millimeter);
-    });
-
-    test('The factory constructor converts from Centimeter to Millimeter', () {
-      final cm = Centimeter(10.0); // 10 cm
-      final mm = Millimeter.from(cm); // Expects 100 mm
-
-      expect(mm.value, 100.0);
-      expect(mm.type, Millimeter);
-    });
-    test('The factory constructor converts from Inch to Millimeter', () {
-      final inch = Inch(10.0); // 10 in
-      final mm = Millimeter.from(inch); // Expects 254 mm
-
-      expect(mm.value, 254);
-      expect(mm.type, Millimeter);
-    });
-
-    test('The factory constructor converts from Meter to Millimeter', () {
-      final m = Meter(1.0); // 1m
-      final mm = Millimeter.from(m); // Expects 1,000 mm
-
-      expect(mm.value, 1000.0);
-      expect(mm.type, Millimeter);
-    });
-    test('The factory constructor converts from Kilometer to Millimeter', () {
-      final km = Kilometer(1.0); // 1km
-      final mm = Millimeter.from(km); // Expects 1,000,000 mm
-
-      expect(mm.value, 1000000.0);
-      expect(mm.type, Millimeter);
-    });
-  }); // Millimeter class
-
-  group('Centimeter class', () {
-    test('The constructor asigns the correct value', () {
-      final cm = Centimeter(15.0);
-      expect(cm.value, 15.0);
-      expect(cm.type, Centimeter);
-    });
-
-    test('The factory constructor converts from Nanometer to Centimeter', () {
-      final nn = Nanometer(1000000.0); // 1,000,000 nn
-      final cm = Centimeter.from(nn); // Expects 0.1 mm
-
-      expect(cm.value, 0.1);
-      expect(cm.type, Centimeter);
-    });
-    test('The factory constructor converts from Micrometer to Centimeter', () {
-      final Mm = Micrometer(1000.0); // 1,000 Mm
-      final cm = Centimeter.from(Mm); // Expects 0.1 cm
-
-      expect(cm.value, 0.1);
-      expect(cm.type, Centimeter);
-    });
-    test('The factory constructor converts from Millimeter to Centimeter', () {
-      final mm = Millimeter(10.0); // 10 mm
-      final cm = Centimeter.from(mm); // Expects 1 cm
-
-      expect(cm.value, 1.0);
-      expect(cm.type, Centimeter);
-    });
-
-    test('The factory constructor converts from Centimeter to Centimeter', () {
-      final cm = Centimeter(10.0); // 10 cm
-      final mm = Centimeter.from(cm); // Expects 10 cm
-
-      expect(mm.value, 10.0);
-      expect(mm.type, Centimeter);
-    });
-    test('The factory constructor converts from Inch to Centimeter', () {
-      final inch = Inch(10.0); // 10 in
-      final cm = Centimeter.from(inch); // Expects 25.4 cm
-
-      expect(cm.value, 25.4);
-      expect(cm.type, Centimeter);
-    });
-
-    test('The factory constructor converts from Meter to Centimeter', () {
-      final m = Meter(1.0); // 1m
-      final cm = Centimeter.from(m); // Expects 100 cm
-
-      expect(cm.value, 100.0);
-      expect(cm.type, Centimeter);
-    });
-    test('The factory constructor converts from Kilometer to Centimeter', () {
-      final km = Kilometer(1.0); // 1km
-      final cm = Centimeter.from(km); // Expects 100,000 cm
-
-      expect(cm.value, 100000.0);
-      expect(cm.type, Centimeter);
-    });
-  }); // Centimeter class
+  test('Length asigns the type Nanometer and the correct value', () {
+    final nm = Length.from(Nanometer, 5);
+    expect(nm.value, 5);
+    expect(nm.type, Nanometer);
+  });
+  test('Length asigns the type Micrometer and the correct value', () {
+    final nm = Length.from(Micrometer, 10);
+    expect(nm.value, 10);
+    expect(nm.type, Micrometer);
+  });
+  test('Length asigns the type Millimeter and the correct value', () {
+    final nm = Length.from(Millimeter, 15);
+    expect(nm.value, 15);
+    expect(nm.type, Millimeter);
+  });
+  test('Length asigns the type Centimeter and the correct value', () {
+    final nm = Length.from(Centimeter, 20);
+    expect(nm.value, 20);
+    expect(nm.type, Centimeter);
+  });
+  test('Length asigns the type Inch and the correct value', () {
+    final nm = Length.from(Inch, 25);
+    expect(nm.value, 25);
+    expect(nm.type, Inch);
+  });
+  test('Length asigns the type Meter and the correct value', () {
+    final nm = Length.from(Meter, 30);
+    expect(nm.value, 30);
+    expect(nm.type, Meter);
+  });
+  test('Length asigns the type Kilometer and the correct value', () {
+    final nm = Length.from(Kilometer, 35);
+    expect(nm.value, 35);
+    expect(nm.type, Kilometer);
+  });
 }
