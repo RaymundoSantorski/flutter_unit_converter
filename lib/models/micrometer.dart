@@ -23,16 +23,16 @@ class Micrometer extends Length {
         val = val * 1000;
         break;
       case Centimeter:
-        val = val * 100000;
+        val = val * 10000;
         break;
       case Inch:
         val = val * 25400;
         break;
       case Meter:
-        val = val * 10000000;
+        val = val * 1000000;
         break;
       case Kilometer:
-        val = val * 10000000000;
+        val = val * 1000000000;
     }
     return Micrometer(val);
   }
