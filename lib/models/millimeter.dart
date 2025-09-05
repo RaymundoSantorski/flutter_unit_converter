@@ -27,7 +27,7 @@ class Millimeter extends Length {
         val = val * 25.4;
         break;
       case Meter:
-        val = val * 100;
+        val = val * 1000;
         break;
       case Kilometer:
         val = val * 1000000;
