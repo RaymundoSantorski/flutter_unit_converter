@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
 
@@ -51,9 +49,8 @@ class _LengthScreenState extends State<LengthScreen> {
             DropdownButton<Type>(
               value: fromType,
               items: [
-                DropdownMenuItem(value: Millimeter, child: Text('mm')),
-                DropdownMenuItem(value: Centimeter, child: Text('cm')),
-                DropdownMenuItem(value: Meter, child: Text('m')),
+                for (Length unit in units)
+                  DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
               ],
               onChanged: setFromType,
             ),
@@ -61,9 +58,8 @@ class _LengthScreenState extends State<LengthScreen> {
             DropdownButton<Type>(
               value: toType,
               items: [
-                DropdownMenuItem(value: Millimeter, child: Text('mm')),
-                DropdownMenuItem(value: Centimeter, child: Text('cm')),
-                DropdownMenuItem(value: Meter, child: Text('m')),
+                for (Length unit in units)
+                  DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
               ],
               onChanged: setToType,
             ),
@@ -72,6 +68,7 @@ class _LengthScreenState extends State<LengthScreen> {
         Card(
           child: TextField(
             keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
             onSubmitted: (value) {
               setState(() {
                 fromValue = Length.from(fromType, double.tryParse(value) ?? 0);
@@ -81,7 +78,13 @@ class _LengthScreenState extends State<LengthScreen> {
             controller: fromController,
           ),
         ),
-        Card(child: TextField(controller: toController, enabled: false)),
+        Card(
+          child: TextField(
+            textAlign: TextAlign.center,
+            controller: toController,
+            enabled: false,
+          ),
+        ),
       ],
     );
   }
