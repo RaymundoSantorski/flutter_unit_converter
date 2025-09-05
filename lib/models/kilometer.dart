@@ -1,4 +1,5 @@
 import 'package:flutter_unit_converter/models/centimeter.dart';
+import 'package:flutter_unit_converter/models/inch.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
@@ -24,6 +25,9 @@ class Kilometer extends Length {
       case Centimeter:
         val = val / 100000;
         break;
+      case Inch:
+        val = val / 39370;
+        break;
       case Meter:
         val = val / 1000;
     }
@@ -46,6 +50,8 @@ class Kilometer extends Length {
         return Micrometer.from(this);
       case Millimeter:
         return Millimeter.from(this);
+      case Inch:
+        return Inch.from(this);
       case Centimeter:
         return Centimeter.from(this);
       case Meter:
