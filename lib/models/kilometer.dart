@@ -1,7 +1,9 @@
 import 'package:flutter_unit_converter/models/centimeter.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
+import 'package:flutter_unit_converter/models/micrometer.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
+import 'package:flutter_unit_converter/models/nanometer.dart';
 
 class Kilometer extends Length {
   Kilometer(super.value);
@@ -10,6 +12,12 @@ class Kilometer extends Length {
   factory Kilometer.from(Length len) {
     double val = len.value;
     switch (len.type) {
+      case Nanometer:
+        val = val / 1000000000000;
+        break;
+      case Micrometer:
+        val = val / 1000000000;
+        break;
       case Millimeter:
         val = val / 1000000;
         break;
@@ -32,6 +40,10 @@ class Kilometer extends Length {
   @override
   Length to(Type type) {
     switch (type) {
+      case Nanometer:
+        return Nanometer.from(this);
+      case Micrometer:
+        return Micrometer.from(this);
       case Millimeter:
         return Millimeter.from(this);
       case Centimeter:

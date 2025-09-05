@@ -1,9 +1,18 @@
 import 'package:flutter_unit_converter/models/centimeter.dart';
 import 'package:flutter_unit_converter/models/kilometer.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
+import 'package:flutter_unit_converter/models/micrometer.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
+import 'package:flutter_unit_converter/models/nanometer.dart';
 
-List<Length> units = [Millimeter(0), Centimeter(0), Meter(0), Kilometer(0)];
+List<Length> units = [
+  Nanometer(0),
+  Micrometer(0),
+  Millimeter(0),
+  Centimeter(0),
+  Meter(0),
+  Kilometer(0),
+];
 
 abstract class Length {
   double value;
@@ -11,6 +20,10 @@ abstract class Length {
 
   factory Length.from(Type type, double value) {
     switch (type) {
+      case Micrometer:
+        return Micrometer(value);
+      case Millimeter:
+        return Millimeter(value);
       case Centimeter:
         return Centimeter(value);
       case Meter:
@@ -18,7 +31,7 @@ abstract class Length {
       case Kilometer:
         return Kilometer(value);
     }
-    return Millimeter(value);
+    return Nanometer(value);
   }
 
   String get unit => '';
