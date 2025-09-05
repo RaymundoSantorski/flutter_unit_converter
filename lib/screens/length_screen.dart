@@ -19,12 +19,18 @@ class _LengthScreenState extends State<LengthScreen> {
 
   Length fromValue = Millimeter(0);
   Length toValue = Millimeter(0);
+  late final TextEditingController fromController = TextEditingController(
+    text: formatNumber(fromValue.value),
+  );
+  @override
+  void initState() {
+    fromController.selection = TextSelection.fromPosition(
+      TextPosition(offset: fromController.text.length),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController fromController = TextEditingController(
-      text: formatNumber(fromValue.value),
-    );
     TextEditingController toController = TextEditingController(
       text: formatNumber(toValue.value),
     );
@@ -38,6 +44,16 @@ class _LengthScreenState extends State<LengthScreen> {
     void setToType(Type? type) {
       setState(() {
         toType = type ?? Millimeter;
+      });
+    }
+
+    void setUnits() {
+      setState(() {
+        fromValue = Length.from(
+          fromType,
+          double.tryParse(fromController.text) ?? 0,
+        );
+        toValue = fromValue.to(toType);
       });
     }
 
@@ -69,12 +85,8 @@ class _LengthScreenState extends State<LengthScreen> {
           child: TextField(
             keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
-            onSubmitted: (value) {
-              setState(() {
-                fromValue = Length.from(fromType, double.tryParse(value) ?? 0);
-                toValue = fromValue.to(toType);
-              });
-            },
+            autofocus: true,
+            onChanged: (value) => setUnits(),
             controller: fromController,
           ),
         ),
