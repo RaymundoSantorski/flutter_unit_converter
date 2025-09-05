@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
+import 'package:flutter_unit_converter/models/millimeter.dart';
 
 class LengthScreen extends StatefulWidget {
   const LengthScreen({super.key});
@@ -35,19 +36,7 @@ class _LengthScreenState extends State<LengthScreen> {
       text: formatNumber(toValue.value),
     );
 
-    void setFromType(Type? type) {
-      setState(() {
-        fromType = type ?? Millimeter;
-      });
-    }
-
-    void setToType(Type? type) {
-      setState(() {
-        toType = type ?? Millimeter;
-      });
-    }
-
-    void setUnits() {
+    Future<void> setUnits() async {
       setState(() {
         fromValue = Length.from(
           fromType,
@@ -55,6 +44,20 @@ class _LengthScreenState extends State<LengthScreen> {
         );
         toValue = fromValue.to(toType);
       });
+    }
+
+    Future<void> setToType(Type? type) async {
+      setState(() {
+        toType = type ?? Millimeter;
+      });
+      setUnits();
+    }
+
+    Future<void> setFromType(Type? type) async {
+      setState(() {
+        fromType = type ?? Millimeter;
+      });
+      setUnits();
     }
 
     return Column(
