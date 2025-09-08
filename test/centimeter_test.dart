@@ -1,68 +1,114 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_unit_converter/models/centimeter.dart';
+import 'package:flutter_unit_converter/models/feet.dart';
 import 'package:flutter_unit_converter/models/inch.dart';
 import 'package:flutter_unit_converter/models/kilometer.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
+import 'package:flutter_unit_converter/models/mile.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/yard.dart';
 
 void main() {
-  test('The constructor asigns the correct value', () {
+  test('01 - The constructor asigns the correct value', () {
     final cm = Centimeter(15.0);
     expect(cm.value, 15.0);
     expect(cm.type, Centimeter);
   });
 
-  test('The factory constructor converts from Nanometer to Centimeter', () {
-    final nn = Nanometer(1000000.0); // 1,000,000 nn
-    final cm = Centimeter.from(nn); // Expects 0.1 mm
+  test(
+    '02 - The factory constructor converts from Nanometer to Centimeter',
+    () {
+      final nm = Nanometer(10000000.0);
+      final cm = nm.to(Centimeter);
 
-    expect(cm.value, 0.1);
-    expect(cm.type, Centimeter);
-  });
-  test('The factory constructor converts from Micrometer to Centimeter', () {
-    final Mm = Micrometer(1000.0); // 1,000 Mm
-    final cm = Centimeter.from(Mm); // Expects 0.1 cm
+      expect(cm.value, 1.0);
+      expect(cm.type, Centimeter);
+    },
+  );
 
-    expect(cm.value, 0.1);
-    expect(cm.type, Centimeter);
-  });
-  test('The factory constructor converts from Millimeter to Centimeter', () {
-    final mm = Millimeter(10.0); // 10 mm
-    final cm = Centimeter.from(mm); // Expects 1 cm
+  test(
+    '03 - The factory constructor converts from Micrometer to Centimeter',
+    () {
+      final mcm = Micrometer(10000.0);
+      final cm = mcm.to(Centimeter);
 
-    expect(cm.value, 1.0);
-    expect(cm.type, Centimeter);
-  });
+      expect(cm.value, 1.0);
+      expect(cm.type, Centimeter);
+    },
+  );
 
-  test('The factory constructor converts from Centimeter to Centimeter', () {
-    final cm = Centimeter(10.0); // 10 cm
-    final mm = Centimeter.from(cm); // Expects 10 cm
+  test(
+    '04 - The factory constructor converts from Millimeter to Centimeter',
+    () {
+      final mm = Millimeter(10.0);
+      final cm = mm.to(Centimeter);
 
-    expect(mm.value, 10.0);
-    expect(mm.type, Centimeter);
-  });
-  test('The factory constructor converts from Inch to Centimeter', () {
-    final inch = Inch(10.0); // 10 in
-    final cm = Centimeter.from(inch); // Expects 25.4 cm
+      expect(cm.value, 1.0);
+      expect(cm.type, Centimeter);
+    },
+  );
 
-    expect(cm.value, 25.4);
-    expect(cm.type, Centimeter);
-  });
+  test(
+    '05 - The factory constructor converts from Centimeter to Centimeter',
+    () {
+      final centimeter = Centimeter(1.0);
+      final cm = centimeter.to(Centimeter);
 
-  test('The factory constructor converts from Meter to Centimeter', () {
-    final m = Meter(1.0); // 1m
-    final cm = Centimeter.from(m); // Expects 100 cm
+      expect(cm.value, 1.0);
+      expect(cm.type, Centimeter);
+    },
+  );
+
+  test('06 - The factory constructor converts from Meter to Centimeter', () {
+    final m = Meter(1.0);
+    final cm = m.to(Centimeter);
 
     expect(cm.value, 100.0);
     expect(cm.type, Centimeter);
   });
-  test('The factory constructor converts from Kilometer to Centimeter', () {
-    final km = Kilometer(1.0); // 1km
-    final cm = Centimeter.from(km); // Expects 100,000 cm
 
-    expect(cm.value, 100000.0);
+  test(
+    '07 - The factory constructor converts from Kilometer to Centimeter',
+    () {
+      final km = Kilometer(1.0);
+      final cm = km.to(Centimeter);
+
+      expect(cm.value, 100000.0);
+      expect(cm.type, Centimeter);
+    },
+  );
+
+  test('08 - The factory constructor converts from Inch to Centimeter', () {
+    final _in = Inch(1.0);
+    final cm = _in.to(Centimeter);
+
+    expect(cm.value, 2.54);
+    expect(cm.type, Centimeter);
+  });
+
+  test('09 - The factory constructor converts from Feet to Centimeter', () {
+    final ft = Feet(1.0);
+    final cm = ft.to(Centimeter);
+
+    expect(cm.value, 30.48);
+    expect(cm.type, Centimeter);
+  });
+
+  test('10 - The factory constructor converts from Yard to Centimeter', () {
+    final yd = Yard(1.0);
+    final cm = yd.to(Centimeter);
+
+    expect(cm.value, 91.44);
+    expect(cm.type, Centimeter);
+  });
+
+  test('11 - The factory constructor converts from Mile to Centimeter', () {
+    final mi = Mile(1.0);
+    final cm = mi.to(Centimeter);
+
+    expect(cm.value, 160934.4);
     expect(cm.type, Centimeter);
   });
 }
