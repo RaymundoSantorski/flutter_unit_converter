@@ -20,29 +20,31 @@ class Mile extends Length {
     double val = len.value;
     switch (len.type) {
       case Nanometer:
-        val = val / 1609344000000;
+        val = val / (1609344 * 1000 * 1000);
         break;
       case Micrometer:
-        val = val / 1609344000;
+        val = val / (1609344 * 1000);
         break;
       case Millimeter:
         val = val / 1609344;
         break;
       case Centimeter:
-        val = val / 160934.4;
+        val = val / (1609344 / 10);
         break;
       case Inch:
         val = val / 63360;
         break;
       case Feet:
         val = val / 5280;
+        break;
       case Yard:
         val = val / 1760;
+        break;
       case Meter:
-        val = val / 1609.344;
+        val = val / (1609344 / 10 / 100);
         break;
       case Kilometer:
-        val = val / 1.609344;
+        val = val / (1609344 / 1000 / 1000);
     }
     return Mile(val);
   }
@@ -72,6 +74,8 @@ class Mile extends Length {
         return Inch.from(this);
       case Feet:
         return Feet.from(this);
+      case Yard:
+        return Yard.from(this);
       case Meter:
         return Meter.from(this);
       case Kilometer:

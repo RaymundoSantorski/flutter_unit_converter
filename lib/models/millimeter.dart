@@ -1,10 +1,13 @@
 import 'package:flutter_unit_converter/models/centimeter.dart';
+import 'package:flutter_unit_converter/models/feet.dart';
 import 'package:flutter_unit_converter/models/inch.dart';
 import 'package:flutter_unit_converter/models/kilometer.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
+import 'package:flutter_unit_converter/models/mile.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/yard.dart';
 
 /// class Millimeter with methods to convert from other length classes
 class Millimeter extends Length {
@@ -17,20 +20,31 @@ class Millimeter extends Length {
     double val = len.value;
     switch (len.type) {
       case Nanometer:
-        val = val / 1000000;
+        val = val / (1000 * 1000);
+        break;
       case Micrometer:
         val = val / 1000;
+        break;
       case Centimeter:
         val = val * 10;
         break;
       case Inch:
-        val = val * 25.4;
+        val = val * (254 / 10);
+        break;
+      case Feet:
+        val = val * (254 * 12 / 10);
+        break;
+      case Yard:
+        val = val * (254 * 12 * 3 / 10);
+        break;
+      case Mile:
+        val = val * (254 * 12 * 3 * 1760 / 10);
         break;
       case Meter:
-        val = val * 1000;
+        val = val * (10 * 100);
         break;
       case Kilometer:
-        val = val * 1000000;
+        val = val * (10 * 100 * 1000);
     }
     return Millimeter(val);
   }
@@ -52,6 +66,12 @@ class Millimeter extends Length {
         return Centimeter.from(this);
       case Inch:
         return Inch.from(this);
+      case Feet:
+        return Feet.from(this);
+      case Yard:
+        return Yard.from(this);
+      case Mile:
+        return Mile.from(this);
       case Meter:
         return Meter.from(this);
       case Kilometer:

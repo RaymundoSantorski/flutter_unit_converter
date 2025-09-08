@@ -36,6 +36,12 @@ abstract class Length {
         return Centimeter(value);
       case Inch:
         return Inch(value);
+      case Feet:
+        return Feet(value);
+      case Yard:
+        return Yard(value);
+      case Mile:
+        return Mile(value);
       case Meter:
         return Meter(value);
       case Kilometer:

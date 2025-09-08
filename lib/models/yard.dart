@@ -5,6 +5,7 @@ import 'package:flutter_unit_converter/models/kilometer.dart';
 import 'package:flutter_unit_converter/models/length_model.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
+import 'package:flutter_unit_converter/models/mile.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
 
@@ -19,27 +20,31 @@ class Yard extends Length {
     double val = len.value;
     switch (len.type) {
       case Nanometer:
-        val = val / 914400000;
+        val = val / (9144 * 100 * 1000);
         break;
       case Micrometer:
-        val = val / 914400;
+        val = val / (9144 * 100);
         break;
       case Millimeter:
-        val = val / 914.4;
+        val = val / (9144 / 10);
         break;
       case Centimeter:
-        val = val / 91.44;
+        val = val / (9144 / 10 / 10);
         break;
       case Inch:
-        val = val / 36;
+        val = val / (3 * 12);
         break;
       case Feet:
         val = val / 3;
+        break;
+      case Mile:
+        val = val * 1760;
+        break;
       case Meter:
-        val = val / 0.9144;
+        val = val / (9144 / 100 / 100);
         break;
       case Kilometer:
-        val = val / 0.0009144;
+        val = val / (9144 / 100 / 100 / 1000);
     }
     return Yard(val);
   }
@@ -69,6 +74,8 @@ class Yard extends Length {
         return Inch.from(this);
       case Feet:
         return Feet.from(this);
+      case Mile:
+        return Mile.from(this);
       case Meter:
         return Meter.from(this);
       case Kilometer:
