@@ -1,10 +1,12 @@
 import 'package:flutter_unit_converter/models/centimeter.dart';
+import 'package:flutter_unit_converter/models/feet.dart';
 import 'package:flutter_unit_converter/models/inch.dart';
 import 'package:flutter_unit_converter/models/kilometer.dart';
 import 'package:flutter_unit_converter/models/meter.dart';
 import 'package:flutter_unit_converter/models/micrometer.dart';
 import 'package:flutter_unit_converter/models/millimeter.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/yard.dart';
 
 List<Length> units = [
   Nanometer(0),
@@ -12,6 +14,8 @@ List<Length> units = [
   Millimeter(0),
   Centimeter(0),
   Inch(0),
+  Feet(0),
+  Yard(0),
   Meter(0),
   Kilometer(0),
 ];
