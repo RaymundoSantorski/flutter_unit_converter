@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_unit_converter/models/length/length_model.dart';
-import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/weight/weight_model.dart';
+import 'package:flutter_unit_converter/models/weight/milligram.dart';
 
 class WeightScreen extends StatefulWidget {
   const WeightScreen({super.key});
@@ -10,16 +10,16 @@ class WeightScreen extends StatefulWidget {
 }
 
 class _WeightScreenState extends State<WeightScreen> {
-  Type fromType = Millimeter;
-  Type toType = Millimeter;
+  Type fromType = Milligram;
+  Type toType = Milligram;
 
   String formatNumber(double value) {
     if (value % 1 == 0) return '${value.toInt()}';
     return '$value';
   }
 
-  Length fromValue = Millimeter(0);
-  Length toValue = Millimeter(0);
+  Weight fromValue = Milligram(0);
+  Weight toValue = Milligram(0);
   late final TextEditingController fromController = TextEditingController(
     text: formatNumber(fromValue.value),
   );
@@ -38,7 +38,7 @@ class _WeightScreenState extends State<WeightScreen> {
 
     Future<void> setUnits() async {
       setState(() {
-        fromValue = Length.from(
+        fromValue = Weight.from(
           fromType,
           double.tryParse(fromController.text) ?? 0,
         );
@@ -48,14 +48,14 @@ class _WeightScreenState extends State<WeightScreen> {
 
     Future<void> setToType(Type? type) async {
       setState(() {
-        toType = type ?? Millimeter;
+        toType = type ?? Milligram;
       });
       setUnits();
     }
 
     Future<void> setFromType(Type? type) async {
       setState(() {
-        fromType = type ?? Millimeter;
+        fromType = type ?? Milligram;
       });
       setUnits();
     }
@@ -68,7 +68,7 @@ class _WeightScreenState extends State<WeightScreen> {
             DropdownButton<Type>(
               value: fromType,
               items: [
-                for (Length unit in units)
+                for (Weight unit in units)
                   DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
               ],
               onChanged: setFromType,
@@ -77,7 +77,7 @@ class _WeightScreenState extends State<WeightScreen> {
             DropdownButton<Type>(
               value: toType,
               items: [
-                for (Length unit in units)
+                for (Weight unit in units)
                   DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
               ],
               onChanged: setToType,
