@@ -1,36 +1,36 @@
-import 'package:flutter_unit_converter/models/weight/kilogram.dart';
+import 'package:flutter_unit_converter/models/weight/gram.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
-class Gram extends Weight {
-  Gram(super.value);
+class Kilogram extends Weight {
+  Kilogram(super.value);
 
-  factory Gram.from(Weight weight) {
+  factory Kilogram.from(Weight weight) {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
+        val = val / (1000 * 1000);
+        break;
+      case Gram:
         val = val / 1000;
         break;
-      case Kilogram:
-        val = val * 1000;
-        break;
     }
-    return Gram(val);
+    return Kilogram(val);
   }
 
   @override
-  Type get type => Gram;
+  Type get type => Kilogram;
 
   @override
-  String get unit => 'g';
+  String get unit => 'kg';
 
   @override
   Weight to(Type type) {
     switch (type) {
       case Milligram:
         return Milligram.from(this);
-      case Kilogram:
-        return Kilogram.from(this);
+      case Gram:
+        return Gram.from(this);
     }
     return this;
   }

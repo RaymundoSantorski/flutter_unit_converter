@@ -1,7 +1,8 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
+import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 
-List<Weight> units = [Milligram(0), Gram(0)];
+List<Weight> units = [Milligram(0), Gram(0), Kilogram(0)];
 
 abstract class Weight {
   double value;
@@ -11,6 +12,8 @@ abstract class Weight {
     switch (type) {
       case Gram:
         return Gram(value);
+      case Kilogram:
+        return Kilogram(value);
     }
     return Milligram(value);
   }

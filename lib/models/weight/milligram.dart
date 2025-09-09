@@ -1,4 +1,5 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
+import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
 class Milligram extends Weight {
@@ -9,6 +10,10 @@ class Milligram extends Weight {
     switch (weight.type) {
       case Gram:
         val = val * 1000;
+        break;
+      case Kilogram:
+        val = val * 1000 * 1000;
+        break;
     }
     return Milligram(val);
   }
@@ -24,6 +29,8 @@ class Milligram extends Weight {
     switch (type) {
       case Gram:
         return Gram.from(this);
+      case Kilogram:
+        return Kilogram.from(this);
     }
     return this;
   }
