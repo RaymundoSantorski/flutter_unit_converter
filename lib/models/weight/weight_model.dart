@@ -3,6 +3,7 @@ import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 import 'package:flutter_unit_converter/models/weight/ounce.dart';
+import 'package:flutter_unit_converter/models/weight/pound.dart';
 
 List<Weight> units = [
   Milligram(0),
@@ -10,6 +11,7 @@ List<Weight> units = [
   Kilogram(0),
   MetricTone(0),
   Ounce(0),
+  Pound(0),
 ];
 
 abstract class Weight {
@@ -26,6 +28,8 @@ abstract class Weight {
         return MetricTone(value);
       case Ounce:
         return Ounce(value);
+      case Pound:
+        return Pound(value);
     }
     return Milligram(value);
   }
