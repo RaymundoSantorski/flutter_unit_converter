@@ -1,62 +1,62 @@
-import 'package:flutter_unit_converter/models/centimeter.dart';
-import 'package:flutter_unit_converter/models/feet.dart';
-import 'package:flutter_unit_converter/models/kilometer.dart';
-import 'package:flutter_unit_converter/models/length_model.dart';
-import 'package:flutter_unit_converter/models/meter.dart';
-import 'package:flutter_unit_converter/models/micrometer.dart';
-import 'package:flutter_unit_converter/models/mile.dart';
-import 'package:flutter_unit_converter/models/millimeter.dart';
-import 'package:flutter_unit_converter/models/nanometer.dart';
-import 'package:flutter_unit_converter/models/yard.dart';
+import 'package:flutter_unit_converter/models/length/centimeter.dart';
+import 'package:flutter_unit_converter/models/length/inch.dart';
+import 'package:flutter_unit_converter/models/length/kilometer.dart';
+import 'package:flutter_unit_converter/models/length/length_model.dart';
+import 'package:flutter_unit_converter/models/length/meter.dart';
+import 'package:flutter_unit_converter/models/length/micrometer.dart';
+import 'package:flutter_unit_converter/models/length/mile.dart';
+import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/length/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/yard.dart';
 
 /// class Centimeter with methods to convert from other length classes
-class Inch extends Length {
+class Feet extends Length {
   /// Constructor of the class, asigns the value
-  Inch(super.value);
+  Feet(super.value);
 
   /// returns an Inch object from another type object and do the unit convertion
   @override
-  factory Inch.from(Length len) {
+  factory Feet.from(Length len) {
     double val = len.value;
     switch (len.type) {
       case Nanometer:
-        val = val / 25400000;
+        val = val / 304800000;
         break;
       case Micrometer:
-        val = val / 25400;
+        val = val / 304800;
         break;
       case Millimeter:
-        val = val / (254 / 10);
+        val = val / (3048 / 10);
         break;
       case Centimeter:
-        val = val / (254 / 100);
+        val = val / (3048 / 100);
         break;
-      case Feet:
-        val = val * 12;
+      case Inch:
+        val = val / 12;
         break;
       case Yard:
-        val = val * 36;
+        val = val * 3;
         break;
       case Mile:
-        val = val * 63360;
+        val = val * 5280;
         break;
       case Meter:
-        val = val / (254 / 10000);
+        val = val / (3048 / 10000);
         break;
       case Kilometer:
-        val = val / (254 / 10000000);
+        val = val / (3048 / 10000000);
     }
-    return Inch(val);
+    return Feet(val);
   }
 
   /// return the abreviation of the unit to be shown in the selectors
   @override
-  String get unit => 'in';
+  String get unit => 'ft';
 
   /// returns the type of the object, we use it in the converter logic as
   /// we declare Length objects that can be of different types
   @override
-  Type get type => Inch;
+  Type get type => Feet;
 
   /// convert from inch object to the specified object
   @override
@@ -70,8 +70,8 @@ class Inch extends Length {
         return Millimeter.from(this);
       case Centimeter:
         return Centimeter.from(this);
-      case Feet:
-        return Feet.from(this);
+      case Inch:
+        return Inch.from(this);
       case Yard:
         return Yard.from(this);
       case Mile:
