@@ -10,6 +10,13 @@ import 'package:flutter_unit_converter/models/millimeter.dart';
 import 'package:flutter_unit_converter/models/nanometer.dart';
 import 'package:flutter_unit_converter/models/yard.dart';
 
+/// Test of the Centimeter class. Using the method 'to' because it tests itself from
+/// the seed class and the factory constructor 'from' from the result class
+/// For example, in the second test we convert from Nanometer to Centimeter
+/// We declare a nanometer constant and use its method 'to', to convert it from nanometer
+/// to centimeter. (nm.to(Centimeter)). Here we test the method to from the Nanometer class
+/// and the factory constructo 'from' from the Centimeter class as it is used in the 'to method
+/// of every length unit in this project.
 void main() {
   test('01 - The constructor asigns the correct value', () {
     final cm = Centimeter(15.0);
