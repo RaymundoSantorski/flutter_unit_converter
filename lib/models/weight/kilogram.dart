@@ -1,6 +1,7 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
 import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
+import 'package:flutter_unit_converter/models/weight/ounce.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
 class Kilogram extends Weight {
@@ -17,6 +18,9 @@ class Kilogram extends Weight {
         break;
       case MetricTone:
         val = val * 1000;
+        break;
+      case Ounce:
+        val = val * 0.0283495;
         break;
     }
     return Kilogram(val);
@@ -37,6 +41,8 @@ class Kilogram extends Weight {
         return Gram.from(this);
       case MetricTone:
         return MetricTone.from(this);
+      case Ounce:
+        return Ounce.from(this);
     }
     return this;
   }

@@ -1,36 +1,36 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
 import 'package:flutter_unit_converter/models/weight/kilogram.dart';
+import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
-import 'package:flutter_unit_converter/models/weight/ounce.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
-class MetricTone extends Weight {
-  MetricTone(super.value);
+class Ounce extends Weight {
+  Ounce(super.value);
 
-  factory MetricTone.from(Weight weight) {
+  factory Ounce.from(Weight weight) {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / (1000 * 1000 * 1000);
+        val = val / 28349.5;
         break;
       case Gram:
-        val = val / (1000 * 1000);
+        val = val / 28.3495;
         break;
       case Kilogram:
-        val = val / 1000;
+        val = val / 0.0283495;
         break;
-      case Ounce:
-        val = val * 0.0000283495;
+      case MetricTone:
+        val = val / 0.0000283495;
         break;
     }
-    return MetricTone(val);
+    return Ounce(val);
   }
 
   @override
-  Type get type => MetricTone;
+  Type get type => Ounce;
 
   @override
-  String get unit => 't';
+  String get unit => 'oz';
 
   @override
   Weight to(Type type) {
@@ -41,8 +41,8 @@ class MetricTone extends Weight {
         return Gram.from(this);
       case Kilogram:
         return Kilogram.from(this);
-      case Ounce:
-        return Ounce.from(this);
+      case MetricTone:
+        return MetricTone.from(this);
     }
     return this;
   }
