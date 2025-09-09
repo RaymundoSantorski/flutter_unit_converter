@@ -1,40 +1,40 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
+import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 import 'package:flutter_unit_converter/models/weight/ounce.dart';
-import 'package:flutter_unit_converter/models/weight/pound.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
-class Kilogram extends Weight {
-  Kilogram(super.value);
+class Pound extends Weight {
+  Pound(super.value);
 
-  factory Kilogram.from(Weight weight) {
+  factory Pound.from(Weight weight) {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / (1000 * 1000);
+        val = val / 453592;
         break;
       case Gram:
-        val = val / 1000;
+        val = val / 453.592;
+        break;
+      case Kilogram:
+        val = val / 0.453592;
         break;
       case MetricTone:
-        val = val * 1000;
+        val = val / 0.000453592;
         break;
       case Ounce:
-        val = val * 0.0283495;
-        break;
-      case Pound:
-        val = val * 0.453592;
+        val = val / 16;
         break;
     }
-    return Kilogram(val);
+    return Pound(val);
   }
 
   @override
-  Type get type => Kilogram;
+  Type get type => Pound;
 
   @override
-  String get unit => 'kg';
+  String get unit => 'lb';
 
   @override
   Weight to(Type type) {
@@ -43,12 +43,12 @@ class Kilogram extends Weight {
         return Milligram.from(this);
       case Gram:
         return Gram.from(this);
+      case Kilogram:
+        return Kilogram.from(this);
       case MetricTone:
         return MetricTone.from(this);
       case Ounce:
         return Ounce.from(this);
-      case Pound:
-        return Pound.from(this);
     }
     return this;
   }
