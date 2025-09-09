@@ -1,13 +1,13 @@
-import 'package:flutter_unit_converter/models/feet.dart';
-import 'package:flutter_unit_converter/models/inch.dart';
-import 'package:flutter_unit_converter/models/kilometer.dart';
-import 'package:flutter_unit_converter/models/length_model.dart';
-import 'package:flutter_unit_converter/models/meter.dart';
-import 'package:flutter_unit_converter/models/micrometer.dart';
-import 'package:flutter_unit_converter/models/mile.dart';
-import 'package:flutter_unit_converter/models/millimeter.dart';
-import 'package:flutter_unit_converter/models/nanometer.dart';
-import 'package:flutter_unit_converter/models/yard.dart';
+import 'package:flutter_unit_converter/models/length/feet.dart';
+import 'package:flutter_unit_converter/models/length/inch.dart';
+import 'package:flutter_unit_converter/models/length/kilometer.dart';
+import 'package:flutter_unit_converter/models/length/length_model.dart';
+import 'package:flutter_unit_converter/models/length/meter.dart';
+import 'package:flutter_unit_converter/models/length/micrometer.dart';
+import 'package:flutter_unit_converter/models/length/mile.dart';
+import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/length/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/yard.dart';
 
 /// class Centimeter with methods to convert from other length classes
 class Centimeter extends Length {
