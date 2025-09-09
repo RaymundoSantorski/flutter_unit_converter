@@ -1,11 +1,13 @@
-import 'package:flutter_unit_converter/models/centimeter.dart';
-import 'package:flutter_unit_converter/models/inch.dart';
-import 'package:flutter_unit_converter/models/kilometer.dart';
-import 'package:flutter_unit_converter/models/length_model.dart';
-import 'package:flutter_unit_converter/models/meter.dart';
-import 'package:flutter_unit_converter/models/micrometer.dart';
-import 'package:flutter_unit_converter/models/millimeter.dart';
-import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/centimeter.dart';
+import 'package:flutter_unit_converter/models/length/inch.dart';
+import 'package:flutter_unit_converter/models/length/kilometer.dart';
+import 'package:flutter_unit_converter/models/length/length_model.dart';
+import 'package:flutter_unit_converter/models/length/meter.dart';
+import 'package:flutter_unit_converter/models/length/micrometer.dart';
+import 'package:flutter_unit_converter/models/length/mile.dart';
+import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/length/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/yard.dart';
 
 /// class Centimeter with methods to convert from other length classes
 class Feet extends Length {
@@ -24,25 +26,32 @@ class Feet extends Length {
         val = val / 304800;
         break;
       case Millimeter:
-        val = val / 304.8;
+        val = val / (3048 / 10);
         break;
       case Centimeter:
-        val = val / 30.48;
+        val = val / (3048 / 100);
         break;
       case Inch:
         val = val / 12;
+        break;
+      case Yard:
+        val = val * 3;
+        break;
+      case Mile:
+        val = val * 5280;
+        break;
       case Meter:
-        val = val / 0.3048;
+        val = val / (3048 / 10000);
         break;
       case Kilometer:
-        val = val / 0.0003048;
+        val = val / (3048 / 10000000);
     }
     return Feet(val);
   }
 
   /// return the abreviation of the unit to be shown in the selectors
   @override
-  String get unit => 'in';
+  String get unit => 'ft';
 
   /// returns the type of the object, we use it in the converter logic as
   /// we declare Length objects that can be of different types
@@ -63,6 +72,10 @@ class Feet extends Length {
         return Centimeter.from(this);
       case Inch:
         return Inch.from(this);
+      case Yard:
+        return Yard.from(this);
+      case Mile:
+        return Mile.from(this);
       case Meter:
         return Meter.from(this);
       case Kilometer:

@@ -1,10 +1,13 @@
-import 'package:flutter_unit_converter/models/inch.dart';
-import 'package:flutter_unit_converter/models/kilometer.dart';
-import 'package:flutter_unit_converter/models/length_model.dart';
-import 'package:flutter_unit_converter/models/meter.dart';
-import 'package:flutter_unit_converter/models/micrometer.dart';
-import 'package:flutter_unit_converter/models/millimeter.dart';
-import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/feet.dart';
+import 'package:flutter_unit_converter/models/length/inch.dart';
+import 'package:flutter_unit_converter/models/length/kilometer.dart';
+import 'package:flutter_unit_converter/models/length/length_model.dart';
+import 'package:flutter_unit_converter/models/length/meter.dart';
+import 'package:flutter_unit_converter/models/length/micrometer.dart';
+import 'package:flutter_unit_converter/models/length/mile.dart';
+import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/length/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/yard.dart';
 
 /// class Centimeter with methods to convert from other length classes
 class Centimeter extends Length {
@@ -26,7 +29,16 @@ class Centimeter extends Length {
         val = val / 10;
         break;
       case Inch:
-        val = val * 2.54;
+        val = val * (254 / 100);
+        break;
+      case Feet:
+        val = val * (3048 / 100);
+        break;
+      case Yard:
+        val = val * (9144 / 100);
+        break;
+      case Mile:
+        val = val * (1609344 / 10);
         break;
       case Meter:
         val = val * 100;
@@ -54,6 +66,12 @@ class Centimeter extends Length {
         return Millimeter.from(this);
       case Inch:
         return Inch.from(this);
+      case Feet:
+        return Feet.from(this);
+      case Yard:
+        return Yard.from(this);
+      case Mile:
+        return Mile.from(this);
       case Meter:
         return Meter.from(this);
       case Kilometer:

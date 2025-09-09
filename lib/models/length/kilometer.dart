@@ -1,10 +1,13 @@
-import 'package:flutter_unit_converter/models/centimeter.dart';
-import 'package:flutter_unit_converter/models/inch.dart';
-import 'package:flutter_unit_converter/models/length_model.dart';
-import 'package:flutter_unit_converter/models/meter.dart';
-import 'package:flutter_unit_converter/models/micrometer.dart';
-import 'package:flutter_unit_converter/models/millimeter.dart';
-import 'package:flutter_unit_converter/models/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/centimeter.dart';
+import 'package:flutter_unit_converter/models/length/feet.dart';
+import 'package:flutter_unit_converter/models/length/inch.dart';
+import 'package:flutter_unit_converter/models/length/length_model.dart';
+import 'package:flutter_unit_converter/models/length/meter.dart';
+import 'package:flutter_unit_converter/models/length/micrometer.dart';
+import 'package:flutter_unit_converter/models/length/mile.dart';
+import 'package:flutter_unit_converter/models/length/millimeter.dart';
+import 'package:flutter_unit_converter/models/length/nanometer.dart';
+import 'package:flutter_unit_converter/models/length/yard.dart';
 
 class Kilometer extends Length {
   Kilometer(super.value);
@@ -27,6 +30,15 @@ class Kilometer extends Length {
         break;
       case Inch:
         val = val / 39370;
+        break;
+      case Feet:
+        val = val / (39370 / 12);
+        break;
+      case Yard:
+        val = val / (39370 / 36);
+        break;
+      case Mile:
+        val = val / (39370 / 63360);
         break;
       case Meter:
         val = val / 1000;
@@ -52,6 +64,12 @@ class Kilometer extends Length {
         return Millimeter.from(this);
       case Inch:
         return Inch.from(this);
+      case Feet:
+        return Feet.from(this);
+      case Yard:
+        return Yard.from(this);
+      case Mile:
+        return Mile.from(this);
       case Centimeter:
         return Centimeter.from(this);
       case Meter:
