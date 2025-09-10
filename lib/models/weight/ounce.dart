@@ -15,16 +15,16 @@ class Ounce extends Weight {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 28349.5;
+        val = val / 28349.5231;
         break;
       case Gram:
-        val = val / 28.3495;
+        val = val / 28.3495231;
         break;
       case Kilogram:
-        val = val / 0.0283495;
+        val = val / 0.0283495231;
         break;
       case MetricTone:
-        val = val / 0.0000283495;
+        val = val / 0.0000283495231;
         break;
       case Pound:
         val = val * 16;
