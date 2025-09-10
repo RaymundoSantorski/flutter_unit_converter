@@ -15,25 +15,25 @@ class Stone extends Weight {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 6350290;
+        val = val / 6350293.18;
         break;
       case Gram:
-        val = val / 6350.29;
+        val = val / 6350.29318;
         break;
       case Kilogram:
-        val = val / 6.35029;
+        val = val / 6.35029318;
         break;
       case MetricTone:
-        val = val / 0.00635029;
+        val = val / 0.006350293;
         break;
       case Ounce:
-        val = val / (16 * 34);
+        val = val / (16 * 14);
         break;
       case Pound:
         val = val / 14;
         break;
       case ShortTone:
-        val = val * 1000 / 7;
+        val = val * 142.85714;
         break;
       case LongTone:
         val = val * 160;
