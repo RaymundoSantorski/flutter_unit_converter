@@ -4,6 +4,7 @@ import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 import 'package:flutter_unit_converter/models/weight/ounce.dart';
 import 'package:flutter_unit_converter/models/weight/pound.dart';
+import 'package:flutter_unit_converter/models/weight/short_tone.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
 class Stone extends Weight {
@@ -30,6 +31,9 @@ class Stone extends Weight {
       case Pound:
         val = val / 14;
         break;
+      case ShortTone:
+        val = val * 1000 / 7;
+        break;
     }
     return Stone(val);
   }
@@ -55,6 +59,8 @@ class Stone extends Weight {
         return Ounce.from(this);
       case Pound:
         return Pound.from(this);
+      case ShortTone:
+        return ShortTone.from(this);
     }
     return this;
   }
