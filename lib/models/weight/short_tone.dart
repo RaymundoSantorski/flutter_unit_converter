@@ -3,50 +3,49 @@ import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/long_tone.dart';
 import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
+import 'package:flutter_unit_converter/models/weight/ounce.dart';
 import 'package:flutter_unit_converter/models/weight/pound.dart';
-import 'package:flutter_unit_converter/models/weight/short_tone.dart';
 import 'package:flutter_unit_converter/models/weight/stone.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
-class Ounce extends Weight {
-  Ounce(super.value);
+class ShortTone extends Weight {
+  ShortTone(super.value);
 
-  factory Ounce.from(Weight weight) {
+  factory ShortTone.from(Weight weight) {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 28349.5231;
+        val = val / 907184740.0;
         break;
       case Gram:
-        val = val / 28.3495231;
+        val = val / 907184.74;
         break;
       case Kilogram:
-        val = val / 0.0283495231;
+        val = val / 907.18474;
         break;
       case MetricTone:
-        val = val / 0.0000283495231;
+        val = val / 0.907185;
+        break;
+      case Ounce:
+        val = val / (2000 * 16);
         break;
       case Pound:
-        val = val * 16;
+        val = val / 2000;
         break;
       case Stone:
-        val = val * (14 * 16);
-        break;
-      case ShortTone:
-        val = val * (2000 * 16);
+        val = val / 142.85714;
         break;
       case LongTone:
-        val = val * 35840;
-        break;
+        val = val * 1.12;
     }
-    return Ounce(val);
+    return ShortTone(val);
   }
 
   @override
-  Type get type => Ounce;
+  Type get type => ShortTone;
 
   @override
-  String get unit => 'oz';
+  String get unit => 'tn';
 
   @override
   Weight to(Type type) {
@@ -59,12 +58,12 @@ class Ounce extends Weight {
         return Kilogram.from(this);
       case MetricTone:
         return MetricTone.from(this);
+      case Ounce:
+        return Ounce.from(this);
       case Pound:
         return Pound.from(this);
       case Stone:
         return Stone.from(this);
-      case ShortTone:
-        return ShortTone.from(this);
       case LongTone:
         return LongTone.from(this);
     }
