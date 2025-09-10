@@ -24,19 +24,19 @@ class Gram extends Weight {
         val = val * (1000 * 1000);
         break;
       case Ounce:
-        val = val * 28.3495;
+        val = val * 28.3495231;
         break;
       case Pound:
-        val = val * 453.592;
+        val = val * 453.59237;
         break;
       case Stone:
-        val = val * 6350.29;
+        val = val * 6350.29318;
         break;
       case ShortTone:
-        val = val * 907185;
+        val = val * 907184.74;
         break;
       case LongTone:
-        val = val * 1016050;
+        val = val * 1016046.9088;
         break;
     }
     return Gram(val);
