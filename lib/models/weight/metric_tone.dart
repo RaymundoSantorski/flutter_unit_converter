@@ -24,19 +24,19 @@ class MetricTone extends Weight {
         val = val / 1000;
         break;
       case Ounce:
-        val = val * 0.0000283495;
+        val = val / 35273.96195;
         break;
       case Pound:
-        val = val * 0.000453592;
+        val = val / 2204.62262;
         break;
       case Stone:
-        val = val * 0.00635029;
+        val = val / 157.47304;
         break;
       case ShortTone:
-        val = val * 0.907185;
+        val = val / 1.10231;
         break;
       case LongTone:
-        val = val * 1.01605;
+        val = val / 0.984207;
         break;
     }
     return MetricTone(val);
