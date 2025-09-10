@@ -1,5 +1,6 @@
 import 'package:flutter_unit_converter/models/weight/gram.dart';
 import 'package:flutter_unit_converter/models/weight/kilogram.dart';
+import 'package:flutter_unit_converter/models/weight/long_tone.dart';
 import 'package:flutter_unit_converter/models/weight/metric_tone.dart';
 import 'package:flutter_unit_converter/models/weight/milligram.dart';
 import 'package:flutter_unit_converter/models/weight/ounce.dart';
@@ -16,6 +17,7 @@ List<Weight> units = [
   Pound(0),
   Stone(0),
   ShortTone(0),
+  LongTone(0),
 ];
 
 abstract class Weight {
@@ -38,6 +40,8 @@ abstract class Weight {
         return Stone(value);
       case ShortTone:
         return ShortTone(value);
+      case LongTone:
+        return LongTone(value);
     }
     return Milligram(value);
   }
