@@ -15,13 +15,13 @@ class ShortTone extends Weight {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 907185000;
+        val = val / 907184740.0;
         break;
       case Gram:
-        val = val / 907185;
+        val = val / 907184.74;
         break;
       case Kilogram:
-        val = val / 907.185;
+        val = val / 907.18474;
         break;
       case MetricTone:
         val = val / 0.907185;
@@ -33,7 +33,7 @@ class ShortTone extends Weight {
         val = val / 2000;
         break;
       case Stone:
-        val = val * 7 / 1000;
+        val = val / 142.85714;
         break;
       case LongTone:
         val = val * 1.12;
