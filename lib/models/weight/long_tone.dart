@@ -15,16 +15,16 @@ class LongTone extends Weight {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 1016050000;
+        val = val / 1016046908.8;
         break;
       case Gram:
-        val = val / 1016050;
+        val = val / 1016046.9088;
         break;
       case Kilogram:
-        val = val / 1016.05;
+        val = val / 1016.0469088;
         break;
       case MetricTone:
-        val = val / 1.01605;
+        val = val / 1.016047;
         break;
       case Ounce:
         val = val / 35840;
