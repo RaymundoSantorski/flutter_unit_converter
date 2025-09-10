@@ -33,10 +33,10 @@ class Kilogram extends Weight {
         val = val * 6.35029;
         break;
       case ShortTone:
-        val = val * 907.185;
+        val = val * 907.18474;
         break;
       case LongTone:
-        val = val * 1016.05;
+        val = val * 1016.0469;
         break;
     }
     return Kilogram(val);
