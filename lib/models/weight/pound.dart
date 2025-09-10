@@ -15,13 +15,13 @@ class Pound extends Weight {
     double val = weight.value;
     switch (weight.type) {
       case Milligram:
-        val = val / 453592;
+        val = val / 453592.37;
         break;
       case Gram:
-        val = val / 453.592;
+        val = val / 453.59237;
         break;
       case Kilogram:
-        val = val / 0.453592;
+        val = val / 0.45359237;
         break;
       case MetricTone:
         val = val / 0.000453592;
