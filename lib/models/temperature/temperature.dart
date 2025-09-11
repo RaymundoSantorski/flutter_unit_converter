@@ -1,6 +1,7 @@
 import 'package:flutter_unit_converter/models/temperature/celcius.dart';
+import 'package:flutter_unit_converter/models/temperature/fahrenheit.dart';
 
-List<Temperature> units = [];
+List<Temperature> units = [Celcius(0), Fahrenheit(0)];
 
 abstract class Temperature {
   double value;
