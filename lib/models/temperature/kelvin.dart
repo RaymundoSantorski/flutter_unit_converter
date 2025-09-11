@@ -1,36 +1,36 @@
 import 'package:flutter_unit_converter/models/temperature/celcius.dart';
-import 'package:flutter_unit_converter/models/temperature/kelvin.dart';
+import 'package:flutter_unit_converter/models/temperature/fahrenheit.dart';
 import 'package:flutter_unit_converter/models/temperature/temperature.dart';
 
-class Fahrenheit extends Temperature {
-  Fahrenheit(super.value);
+class Kelvin extends Temperature {
+  Kelvin(super.value);
 
-  factory Fahrenheit.from(Temperature temp) {
+  factory Kelvin.from(Temperature temp) {
     double val = temp.value;
     switch (temp.type) {
       case Celcius:
-        val = val * 9 / 5 + 32;
+        val = val + 273.15;
         break;
-      case Kelvin:
-        val = (val - 273.15) * 9 / 5 + 32;
+      case Fahrenheit:
+        val = (val - 32) * 5 / 9 + 273.15;
         break;
     }
-    return Fahrenheit(val);
+    return Kelvin(val);
   }
 
   @override
-  Type get type => Fahrenheit;
+  Type get type => Kelvin;
 
   @override
-  String get unit => '°F';
+  String get unit => 'K';
 
   @override
   Temperature to(Type type) {
     switch (type) {
       case Celcius:
         return Celcius.from(this);
-      case Kelvin:
-        return Kelvin.from(this);
+      case Fahrenheit:
+        return Fahrenheit.from(this);
     }
     return this;
   }
