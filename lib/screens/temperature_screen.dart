@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_unit_converter/models/temperature/celsius.dart';
+import 'package:flutter_unit_converter/models/temperature/fahrenheit.dart';
 import 'package:flutter_unit_converter/models/temperature/kelvin.dart';
 import 'package:flutter_unit_converter/models/temperature/temperature.dart';
 
@@ -10,16 +12,16 @@ class TemperatureScreen extends StatefulWidget {
 }
 
 class _TemperatureScreenState extends State<TemperatureScreen> {
-  Type fromType = Kelvin;
-  Type toType = Kelvin;
+  Type fromType = Celsius;
+  Type toType = Fahrenheit;
 
   String formatNumber(double value) {
     if (value % 1 == 0) return '${value.toInt()}';
     return '$value';
   }
 
-  Temperature fromValue = Kelvin(0);
-  Temperature toValue = Kelvin(0);
+  Temperature fromValue = Celsius(0);
+  Temperature toValue = Fahrenheit(32);
   late final TextEditingController fromController = TextEditingController(
     text: formatNumber(fromValue.value),
   );
