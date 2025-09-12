@@ -1,3 +1,4 @@
+import 'package:flutter_unit_converter/models/unit.dart';
 import 'package:flutter_unit_converter/models/weight/gram.dart';
 import 'package:flutter_unit_converter/models/weight/kilogram.dart';
 import 'package:flutter_unit_converter/models/weight/long_tone.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_unit_converter/models/weight/pound.dart';
 import 'package:flutter_unit_converter/models/weight/short_tone.dart';
 import 'package:flutter_unit_converter/models/weight/stone.dart';
 
-List<Weight> units = [
+List<Weight> weightUnits = const [
   Milligram(0),
   Gram(0),
   Kilogram(0),
@@ -20,9 +21,8 @@ List<Weight> units = [
   LongTone(0),
 ];
 
-abstract class Weight {
-  double value;
-  Weight(this.value);
+abstract class Weight extends Unit<Weight> {
+  const Weight(super.value);
 
   factory Weight.from(Type type, double value) {
     switch (type) {
