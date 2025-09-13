@@ -12,42 +12,7 @@ import 'package:flutter_unit_converter/models/length/yard.dart';
 /// class Centimeter with methods to convert from other length classes
 class Micrometer extends Length {
   /// Constructor of the class, asigns the value
-  Micrometer(super.value);
-
-  /// returns a Centimeter a Length object
-  @override
-  factory Micrometer.from(Length len) {
-    double val = len.value;
-    switch (len.type) {
-      case Nanometer:
-        val = val / 1000;
-        break;
-      case Millimeter:
-        val = val * 1000;
-        break;
-      case Centimeter:
-        val = val * 10000;
-        break;
-      case Inch:
-        val = val * 25400;
-        break;
-      case Feet:
-        val = val * (25400 * 12);
-        break;
-      case Yard:
-        val = val * (25400 * 12 * 3);
-        break;
-      case Mile:
-        val = val * (25400 * 12 * 3 * 1760);
-        break;
-      case Meter:
-        val = val * 1000000;
-        break;
-      case Kilometer:
-        val = val * 1000000000;
-    }
-    return Micrometer(val);
-  }
+  const Micrometer(super.value);
 
   @override
   String get unit => 'Mm';
@@ -59,23 +24,23 @@ class Micrometer extends Length {
   Length to(Type type) {
     switch (type) {
       case Nanometer:
-        return Nanometer.from(this);
+        return Nanometer(value * 1000);
       case Millimeter:
-        return Millimeter.from(this);
+        return Millimeter(value / 1000);
       case Centimeter:
-        return Centimeter.from(this);
+        return Centimeter(value / 10000);
       case Inch:
-        return Inch.from(this);
+        return Inch(value / 25400);
       case Feet:
-        return Feet.from(this);
+        return Feet(value / 304800);
       case Yard:
-        return Yard.from(this);
+        return Yard(value / (9144 * 100));
       case Mile:
-        return Mile.from(this);
+        return Mile(value / (1609344 * 1000));
       case Meter:
-        return Meter.from(this);
+        return Meter(value / 1000000);
       case Kilometer:
-        return Kilometer.from(this);
+        return Kilometer(value / 1000000000);
       default:
         return this;
     }

@@ -12,43 +12,7 @@ import 'package:flutter_unit_converter/models/length/yard.dart';
 /// class Meter with methods to convert from other length classes
 class Meter extends Length {
   /// Constructor of the class, asigns the value
-  Meter(super.value);
-
-  /// returns a Meter from a Length object
-  @override
-  factory Meter.from(Length len) {
-    double val = len.value;
-    switch (len.type) {
-      case Nanometer:
-        val = val / 1000000000;
-        break;
-      case Micrometer:
-        val = val / 1000000;
-        break;
-      case Millimeter:
-        val = val / 1000;
-        break;
-      case Centimeter:
-        val = val / 100;
-        break;
-      case Inch:
-        val = val / (3937 / 100);
-        break;
-      case Feet:
-        val = val / (3937 / 100 / 12);
-        break;
-      case Yard:
-        val = val / (3937 / 100 / 12 / 3);
-        break;
-      case Mile:
-        val = val / (3937 / 100 / 12 / 3 / 1760);
-        break;
-      case Kilometer:
-        val = val * 1000;
-    }
-
-    return Meter(val);
-  }
+  const Meter(super.value);
 
   @override
   String get unit => 'm';
@@ -60,23 +24,23 @@ class Meter extends Length {
   Length to(Type type) {
     switch (type) {
       case Nanometer:
-        return Nanometer.from(this);
+        return Nanometer(value * (1000 * 1000 * 10 * 100));
       case Micrometer:
-        return Micrometer.from(this);
+        return Micrometer(value * 1000000);
       case Millimeter:
-        return Millimeter.from(this);
+        return Millimeter(value * (10 * 100));
       case Centimeter:
-        return Centimeter.from(this);
+        return Centimeter(value * 100);
       case Inch:
-        return Inch.from(this);
+        return Inch(value / (254 / 10000));
       case Feet:
-        return Feet.from(this);
+        return Feet(value / (3048 / 10000));
       case Yard:
-        return Yard.from(this);
+        return Yard(value / (9144 / 100 / 100));
       case Mile:
-        return Mile.from(this);
+        return Mile(value / (1609344 / 10 / 100));
       case Kilometer:
-        return Kilometer.from(this);
+        return Kilometer(value / 1000);
       default:
         return this;
     }

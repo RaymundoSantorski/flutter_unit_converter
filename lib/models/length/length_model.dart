@@ -8,8 +8,9 @@ import 'package:flutter_unit_converter/models/length/mile.dart';
 import 'package:flutter_unit_converter/models/length/millimeter.dart';
 import 'package:flutter_unit_converter/models/length/nanometer.dart';
 import 'package:flutter_unit_converter/models/length/yard.dart';
+import 'package:flutter_unit_converter/models/unit.dart';
 
-List<Length> units = [
+List<Length> lengthUnits = const [
   Nanometer(0),
   Micrometer(0),
   Millimeter(0),
@@ -22,9 +23,8 @@ List<Length> units = [
   Kilometer(0),
 ];
 
-abstract class Length {
-  double value;
-  Length(this.value);
+abstract class Length extends Unit<Length> {
+  const Length(super.value);
 
   factory Length.from(Type type, double value) {
     switch (type) {
@@ -49,10 +49,4 @@ abstract class Length {
     }
     return Nanometer(value);
   }
-
-  String get unit => '';
-
-  Type get type => Length;
-
-  Length to(Type type) => this;
 }

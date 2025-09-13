@@ -3,20 +3,7 @@ import 'package:flutter_unit_converter/models/temperature/kelvin.dart';
 import 'package:flutter_unit_converter/models/temperature/temperature.dart';
 
 class Fahrenheit extends Temperature {
-  Fahrenheit(super.value);
-
-  factory Fahrenheit.from(Temperature temp) {
-    double val = temp.value;
-    switch (temp.type) {
-      case Celsius:
-        val = val * 9 / 5 + 32;
-        break;
-      case Kelvin:
-        val = (val - 273.15) * 9 / 5 + 32;
-        break;
-    }
-    return Fahrenheit(val);
-  }
+  const Fahrenheit(super.value);
 
   @override
   Type get type => Fahrenheit;
@@ -28,9 +15,9 @@ class Fahrenheit extends Temperature {
   Temperature to(Type type) {
     switch (type) {
       case Celsius:
-        return Celsius.from(this);
+        return Celsius((value - 32) * 5 / 9);
       case Kelvin:
-        return Kelvin.from(this);
+        return Kelvin((value - 32) * 5 / 9 + 273.15);
     }
     return this;
   }
