@@ -22,9 +22,4 @@ abstract class Temperature extends Unit<Temperature> {
     }
     return Celsius(value);
   }
-
-  Type get type => Temperature;
-  String get unit => '';
-
-  Temperature to(Type type) => this;
 }

@@ -45,8 +45,4 @@ abstract class Weight extends Unit<Weight> {
     }
     return Milligram(value);
   }
-
-  String get unit => '';
-  Type get type => Weight;
-  Weight to(Type type) => this;
 }
