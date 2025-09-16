@@ -9,38 +9,7 @@ import 'package:flutter_unit_converter/models/weight/stone.dart';
 import 'package:flutter_unit_converter/models/weight/weight_model.dart';
 
 class Pound extends Weight {
-  Pound(super.value);
-
-  factory Pound.from(Weight weight) {
-    double val = weight.value;
-    switch (weight.type) {
-      case Milligram:
-        val = val / 453592.37;
-        break;
-      case Gram:
-        val = val / 453.59237;
-        break;
-      case Kilogram:
-        val = val / 0.45359237;
-        break;
-      case MetricTone:
-        val = val / 0.000453592;
-        break;
-      case Ounce:
-        val = val / 16;
-        break;
-      case Stone:
-        val = val * 14;
-        break;
-      case ShortTone:
-        val = val * 2000;
-        break;
-      case LongTone:
-        val = val * 2240;
-        break;
-    }
-    return Pound(val);
-  }
+  const Pound(super.value);
 
   @override
   Type get type => Pound;
@@ -52,21 +21,21 @@ class Pound extends Weight {
   Weight to(Type type) {
     switch (type) {
       case Milligram:
-        return Milligram.from(this);
+        return Milligram(value * 453592.37);
       case Gram:
-        return Gram.from(this);
+        return Gram(value * 453.59237);
       case Kilogram:
-        return Kilogram.from(this);
+        return Kilogram(value * 0.453592);
       case MetricTone:
-        return MetricTone.from(this);
+        return MetricTone(value / 2204.62262);
       case Ounce:
-        return Ounce.from(this);
+        return Ounce(value * 16);
       case Stone:
-        return Stone.from(this);
+        return Stone(value / 14);
       case ShortTone:
-        return ShortTone.from(this);
+        return ShortTone(value / 2000);
       case LongTone:
-        return LongTone.from(this);
+        return LongTone(value / 2240);
     }
     return this;
   }
