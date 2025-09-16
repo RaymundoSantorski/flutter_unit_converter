@@ -1,4 +1,5 @@
 import 'package:flutter_unit_converter/models/volume/gallon.dart';
+import 'package:flutter_unit_converter/models/volume/liquid_ounce.dart';
 import 'package:flutter_unit_converter/models/volume/milliliter.dart';
 import 'package:flutter_unit_converter/models/volume/volume_model.dart';
 
@@ -17,7 +18,9 @@ class Liter extends Volume {
       case Milliliter:
         return Milliliter(value * 1000);
       case Gallon:
-        return Gallon(value / 0.264172);
+        return Gallon(value / 3.78541);
+      case LiquidOunce:
+        return LiquidOunce(value / 0.0295735);
     }
     return this;
   }
