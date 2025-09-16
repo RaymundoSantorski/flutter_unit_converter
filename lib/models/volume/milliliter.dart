@@ -17,7 +17,7 @@ class Milliliter extends Volume {
       case Liter:
         return Liter(value / 1000);
       case Gallon:
-        return Gallon(value / 0.000264172);
+        return Gallon(value / 3785.41);
       case LiquidOunce:
         return LiquidOunce(value / 29.5735);
     }
