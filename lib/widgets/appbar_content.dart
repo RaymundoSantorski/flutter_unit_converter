@@ -46,6 +46,12 @@ class AppbarContent extends StatelessWidget {
               enabled: value != 2,
               child: Text('Temperatura'),
             ),
+            DropdownMenuItem(
+              key: Key('ddi_3'),
+              value: 3,
+              enabled: value != 3,
+              child: Text('Volumen'),
+            ),
           ],
           onChanged: setValue,
         ),

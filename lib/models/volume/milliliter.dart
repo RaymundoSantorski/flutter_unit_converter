@@ -4,7 +4,7 @@ import 'package:flutter_unit_converter/models/volume/liter.dart';
 import 'package:flutter_unit_converter/models/volume/volume_model.dart';
 
 class Milliliter extends Volume {
-  Milliliter(super.value);
+  const Milliliter(super.value);
   @override
   Type get type => Milliliter;
 
