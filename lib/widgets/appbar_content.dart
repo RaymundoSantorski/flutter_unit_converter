@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_unit_converter/widgets/selector_item.dart';
 
 class AppbarContent extends StatelessWidget {
   const AppbarContent({
@@ -27,26 +28,7 @@ class AppbarContent extends StatelessWidget {
           dropdownColor: Color.fromRGBO(50, 50, 250, 0.9),
           value: value,
           iconDisabledColor: Colors.grey,
-          items: [
-            DropdownMenuItem(
-              key: Key('ddi_0'),
-              value: 0,
-              enabled: value != 0,
-              child: Text('Longitud'),
-            ),
-            DropdownMenuItem(
-              key: Key('ddi_1'),
-              value: 1,
-              enabled: value != 1,
-              child: Text('Peso'),
-            ),
-            DropdownMenuItem(
-              key: Key('ddi_2'),
-              value: 2,
-              enabled: value != 2,
-              child: Text('Temperatura'),
-            ),
-          ],
+          items: unitSelectorItems(value),
           onChanged: setValue,
         ),
       ],

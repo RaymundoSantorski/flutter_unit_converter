@@ -78,46 +78,55 @@ class _ConversionScreenState<T extends Unit<T>>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            DropdownButton<Type>(
-              value: fromType,
-              items: [
-                for (T unit in widget.units)
-                  DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
-              ],
-              onChanged: _setFromType,
-            ),
-            const Icon(Icons.arrow_forward),
-            DropdownButton<Type>(
-              value: toType,
-              items: [
-                for (T unit in widget.units)
-                  DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
-              ],
-              onChanged: _setToType,
-            ),
-          ],
-        ),
-        Card(
-          child: TextField(
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            autofocus: true,
-            controller: fromController,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              DropdownButton<Type>(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                dropdownColor: Color.fromRGBO(250, 250, 250, 0.8),
+                value: fromType,
+                items: [
+                  for (T unit in widget.units)
+                    DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
+                ],
+                onChanged: _setFromType,
+              ),
+              const Icon(Icons.arrow_forward),
+              DropdownButton<Type>(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                dropdownColor: Color.fromRGBO(250, 250, 250, 0.8),
+                value: toType,
+                items: [
+                  for (T unit in widget.units)
+                    DropdownMenuItem(value: unit.type, child: Text(unit.unit)),
+                ],
+                onChanged: _setToType,
+              ),
+            ],
           ),
-        ),
-        Card(
-          child: TextField(
-            textAlign: TextAlign.center,
-            controller: toController,
-            enabled: false,
+          Card(
+            margin: EdgeInsetsGeometry.only(top: 20),
+            child: TextField(
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              autofocus: true,
+              controller: fromController,
+            ),
           ),
-        ),
-      ],
+          Card(
+            margin: EdgeInsetsGeometry.only(top: 20),
+            child: TextField(
+              readOnly: true,
+              textAlign: TextAlign.center,
+              controller: toController,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
